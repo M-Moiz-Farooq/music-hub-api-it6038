@@ -1,0 +1,1028 @@
+{
+  "info": {
+    "_postman_id": "0d3cf477-1c82-44dc-a563-26e77f9b9f3a",
+    "name": "Music Hub API - IT6038 Assessment",
+    "description": "Postman evidence collection for the Music Hub API. Run npm run seed before running this collection. Signup evidence requests may return 400 if seed.js has already created the required users. DELETE requests are placed last because they remove seeded records.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "00 Signup Evidence - SamuelSmith@test.com",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"SamuelSmith@test.com\",\n  \"password\": \"Sam@12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/signup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "signup"
+              ]
+            },
+            "description": "Optional signup evidence request. If seed.js has already created this user, a 400 duplicate-user response is acceptable evidence because seed.js creates the required users with bcrypt-hashed passwords."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Signup evidence returns created or duplicate-user response', function () { pm.expect([201, 400]).to.include(pm.response.code); });",
+                  "pm.test('Signup evidence message is expected', function () { const message = pm.response.json().message; pm.expect(['User created', 'Email already in use']).to.include(message); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "00 Signup Evidence - StefaniGermanotta@test.com",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"StefaniGermanotta@test.com\",\n  \"password\": \"Gaga@12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/signup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "signup"
+              ]
+            },
+            "description": "Optional signup evidence request. If seed.js has already created this user, a 400 duplicate-user response is acceptable evidence because seed.js creates the required users with bcrypt-hashed passwords."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Signup evidence returns created or duplicate-user response', function () { pm.expect([201, 400]).to.include(pm.response.code); });",
+                  "pm.test('Signup evidence message is expected', function () { const message = pm.response.json().message; pm.expect(['User created', 'Email already in use']).to.include(message); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "00 Signup Evidence - AdeleAdkins@test.com",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"AdeleAdkins@test.com\",\n  \"password\": \"Adele@12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/signup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "signup"
+              ]
+            },
+            "description": "Optional signup evidence request. If seed.js has already created this user, a 400 duplicate-user response is acceptable evidence because seed.js creates the required users with bcrypt-hashed passwords."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Signup evidence returns created or duplicate-user response', function () { pm.expect([201, 400]).to.include(pm.response.code); });",
+                  "pm.test('Signup evidence message is expected', function () { const message = pm.response.json().message; pm.expect(['User created', 'Email already in use']).to.include(message); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "00 Signup Evidence - JelenaHadid@test.com",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"JelenaHadid@test.com\",\n  \"password\": \"Jelena@12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/signup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "signup"
+              ]
+            },
+            "description": "Optional signup evidence request. If seed.js has already created this user, a 400 duplicate-user response is acceptable evidence because seed.js creates the required users with bcrypt-hashed passwords."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Signup evidence returns created or duplicate-user response', function () { pm.expect([201, 400]).to.include(pm.response.code); });",
+                  "pm.test('Signup evidence message is expected', function () { const message = pm.response.json().message; pm.expect(['User created', 'Email already in use']).to.include(message); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "01 Auth - Login valid user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"SamuelSmith@test.com\",\n  \"password\": \"Sam@12345\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            },
+            "description": "Expected response: 200 OK with token and expiresIn."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('JWT token is returned', function () { pm.expect(json.token).to.be.a('string').and.not.empty; });",
+                  "pm.test('expiresIn is 3600', function () { pm.expect(json.expiresIn).to.eql(3600); });",
+                  "pm.collectionVariables.set('token', json.token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 Auth - Login invalid password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"SamuelSmith@test.com\",\n  \"password\": \"WrongPassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            },
+            "description": "Expected response: 401 Unauthorized with Auth failed message."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 401', function () { pm.response.to.have.status(401); });",
+                  "pm.test('Auth failed message returned', function () { pm.expect(pm.response.json().message).to.eql('Auth failed'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 Auth - GET songs with no token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/songs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs"
+              ]
+            },
+            "description": "Expected response: 401 Unauthorized because no JWT is supplied."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 401', function () { pm.response.to.have.status(401); });",
+                  "pm.test('No token message returned', function () { pm.expect(pm.response.json().message).to.eql('Auth failed: No token'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 Auth - GET songs with invalid token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer invalid-token"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/songs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs"
+              ]
+            },
+            "description": "Expected response: 401 Unauthorized because the JWT is invalid."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 401', function () { pm.response.to.have.status(401); });",
+                  "pm.test('Invalid token message returned', function () { pm.expect(pm.response.json().message).to.eql('Auth failed: Invalid token'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 Auth - GET songs with valid token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/songs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs"
+              ]
+            },
+            "description": "Expected response: 200 OK with seeded songs."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "const songs = pm.response.json();",
+                  "pm.test('Five songs are returned', function () { pm.expect(songs).to.be.an('array').with.lengthOf(5); });",
+                  "if (songs.length > 0) { pm.collectionVariables.set('songId', songs[0]._id); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Songs",
+      "item": [
+        {
+          "name": "06 GET Multiple - Songs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/songs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs"
+              ]
+            },
+            "description": "Expected response: 200 OK with 5 songs."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "const songs = pm.response.json();",
+                  "pm.test('Five songs are returned', function () { pm.expect(songs).to.be.an('array').with.lengthOf(5); });",
+                  "pm.collectionVariables.set('songId', songs[0]._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 GET Specific Valid - Song by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/songs/{{songId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs",
+                "{{songId}}"
+              ]
+            },
+            "description": "Expected response: 200 OK with one song."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Returned song id matches variable', function () { pm.expect(pm.response.json()._id).to.eql(pm.collectionVariables.get('songId')); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "15 PATCH Valid - Song by ID",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration\": 211\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/songs/{{songId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs",
+                "{{songId}}"
+              ]
+            },
+            "description": "Expected response: 200 OK with updated song duration."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Song duration updated', function () { pm.expect(pm.response.json().duration).to.eql(211); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "21 DELETE Valid - Song by ID",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/songs/{{songId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs",
+                "{{songId}}"
+              ]
+            },
+            "description": "Expected response: 200 OK with Song deleted message. Run this near the end because it removes a seeded song."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Song deleted message returned', function () { pm.expect(pm.response.json().message).to.eql('Song deleted'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Artists",
+      "item": [
+        {
+          "name": "07 GET Multiple - Artists",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/artists",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "artists"
+              ]
+            },
+            "description": "Expected response: 200 OK with 5 artists."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "const artists = pm.response.json();",
+                  "pm.test('Five artists are returned', function () { pm.expect(artists).to.be.an('array').with.lengthOf(5); });",
+                  "pm.collectionVariables.set('artistId', artists[0]._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 GET Specific Valid - Artist by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/artists/{{artistId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "artists",
+                "{{artistId}}"
+              ]
+            },
+            "description": "Expected response: 200 OK with one artist."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Returned artist id matches variable', function () { pm.expect(pm.response.json()._id).to.eql(pm.collectionVariables.get('artistId')); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "22 DELETE Valid - Artist by ID",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/artists/{{artistId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "artists",
+                "{{artistId}}"
+              ]
+            },
+            "description": "Expected response: 200 OK with Artist deleted message. Run this near the end because it removes a seeded artist."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Artist deleted message returned', function () { pm.expect(pm.response.json().message).to.eql('Artist deleted'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Albums",
+      "item": [
+        {
+          "name": "08 GET Multiple - Albums",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/albums",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "albums"
+              ]
+            },
+            "description": "Expected response: 200 OK with 5 albums."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "const albums = pm.response.json();",
+                  "pm.test('Five albums are returned', function () { pm.expect(albums).to.be.an('array').with.lengthOf(5); });",
+                  "pm.collectionVariables.set('albumId', albums[0]._id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 GET Specific Valid - Album by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/albums/{{albumId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "albums",
+                "{{albumId}}"
+              ]
+            },
+            "description": "Expected response: 200 OK with one album."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Returned album id matches variable', function () { pm.expect(pm.response.json()._id).to.eql(pm.collectionVariables.get('albumId')); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "16 PATCH Valid - Album by ID",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"releaseYear\": 2016\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/albums/{{albumId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "albums",
+                "{{albumId}}"
+              ]
+            },
+            "description": "Expected response: 200 OK with updated album releaseYear."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Album release year updated', function () { pm.expect(pm.response.json().releaseYear).to.eql(2016); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Negative Tests",
+      "item": [
+        {
+          "name": "12 GET Specific Invalid - Song invalid ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/songs/invalidid123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs",
+                "invalidid123"
+              ]
+            },
+            "description": "Expected response: 404 Not Found with Song not found."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Song not found message returned', function () { pm.expect(pm.response.json().message).to.eql('Song not found'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "13 GET Specific Invalid - Artist invalid ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/artists/invalidid123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "artists",
+                "invalidid123"
+              ]
+            },
+            "description": "Expected response: 404 Not Found with Artist not found."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Artist not found message returned', function () { pm.expect(pm.response.json().message).to.eql('Artist not found'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "14 GET Specific Invalid - Album invalid ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/albums/invalidid123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "albums",
+                "invalidid123"
+              ]
+            },
+            "description": "Expected response: 404 Not Found with Album not found."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Album not found message returned', function () { pm.expect(pm.response.json().message).to.eql('Album not found'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "17 PATCH Invalid - Song invalid ID",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration\": 199\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/songs/invalidid123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs",
+                "invalidid123"
+              ]
+            },
+            "description": "Expected response: 404 Not Found with Song not found."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Song not found message returned', function () { pm.expect(pm.response.json().message).to.eql('Song not found'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "18 PATCH Invalid - Album invalid ID",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"releaseYear\": 2024\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/albums/invalidid123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "albums",
+                "invalidid123"
+              ]
+            },
+            "description": "Expected response: 404 Not Found with Album not found."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Album not found message returned', function () { pm.expect(pm.response.json().message).to.eql('Album not found'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "19 DELETE Invalid - Song invalid ID",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/songs/invalidid123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "songs",
+                "invalidid123"
+              ]
+            },
+            "description": "Expected response: 404 Not Found with Song not found."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Song not found message returned', function () { pm.expect(pm.response.json().message).to.eql('Song not found'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "20 DELETE Invalid - Artist invalid ID",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/artists/invalidid123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "artists",
+                "invalidid123"
+              ]
+            },
+            "description": "Expected response: 404 Not Found with Artist not found."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 404', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Artist not found message returned', function () { pm.expect(pm.response.json().message).to.eql('Artist not found'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "songId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "artistId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "albumId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

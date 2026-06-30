@@ -1,0 +1,749 @@
+{
+  "info": {
+    "_postman_id": "7d16bf7c-8f4e-4d2a-a08e-0a2ec6a15e4d",
+    "name": "OpenWeatherMap - IT6038 Assessment Part A",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Weather by City",
+      "item": [
+        {
+          "name": "Auckland Weather",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=Auckland&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Auckland"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Wellington Weather",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=Wellington&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Wellington"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Christchurch Weather",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=Christchurch&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Christchurch"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "London Weather",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "London"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Paris Weather",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Paris"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Weather by Coordinates",
+      "item": [
+        {
+          "name": "Queenstown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?lat=-45.0312&lon=168.6626&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "-45.0312"
+                },
+                {
+                  "key": "lon",
+                  "value": "168.6626"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Dunedin",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?lat=-45.8788&lon=170.5028&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "-45.8788"
+                },
+                {
+                  "key": "lon",
+                  "value": "170.5028"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rotorua",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?lat=-38.1368&lon=176.2497&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "-38.1368"
+                },
+                {
+                  "key": "lon",
+                  "value": "176.2497"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Munich",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?lat=48.1351&lon=11.5820&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "48.1351"
+                },
+                {
+                  "key": "lon",
+                  "value": "11.5820"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Madrid",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://api.openweathermap.org/data/2.5/weather?lat=40.4168&lon=-3.7038&units=metric&appid=30dbb321671ff8c9858ee6a3d2190359",
+              "protocol": "https",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "lat",
+                  "value": "40.4168"
+                },
+                {
+                  "key": "lon",
+                  "value": "-3.7038"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                },
+                {
+                  "key": "appid",
+                  "value": "30dbb321671ff8c9858ee6a3d2190359"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const jsonData = pm.response.json();",
+                  "",
+                  "pm.test('weather array exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('weather');",
+                  "  pm.expect(jsonData.weather).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test('main.temp_min exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_min');",
+                  "});",
+                  "",
+                  "pm.test('main.temp_max exists', function () {",
+                  "  pm.expect(jsonData).to.have.property('main');",
+                  "  pm.expect(jsonData.main).to.have.property('temp_max');",
+                  "});",
+                  "",
+                  "pm.test('weather[0].description exists', function () {",
+                  "  pm.expect(jsonData.weather[0]).to.exist;",
+                  "  pm.expect(jsonData.weather[0]).to.have.property('description');",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

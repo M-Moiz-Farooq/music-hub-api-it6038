@@ -1,0 +1,280 @@
+#%RAML 1.0
+title: Music Hub API
+version: v1
+baseUri: http://localhost:3000
+mediaType: application/json
+
+securitySchemes:
+  jwt:
+    description: JWT authorization using the Bearer scheme
+    type: x-jwt
+    describedBy:
+      headers:
+        Authorization:
+          description: Use the Bearer token format: Bearer {token}
+          type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.example
+      responses:
+        401:
+          body:
+            application/json:
+              example: { "message": "Auth failed: Invalid token" }
+
+/songs:
+  get:
+    securedBy: [ jwt ]
+    description: Get all songs
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "_id": "64f000000000000000000001",
+                  "title": "Song A",
+                  "genre": "Pop",
+                  "duration": 210,
+                  "releaseYear": 2015,
+                  "artist": "64f000000000000000000011",
+                  "album": "64f000000000000000000021"
+                }
+              ]
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: No token" }
+      500:
+        body:
+          application/json:
+            example: { "message": "Internal Server Error" }
+
+/songs/{songId}:
+  uriParameters:
+    songId:
+      type: string
+      example: 64f000000000000000000001
+  get:
+    securedBy: [ jwt ]
+    description: Get song by id
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "_id": "64f000000000000000000001", "title": "Song A", "genre": "Pop", "duration": 210, "releaseYear": 2015 }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: Invalid token" }
+      404:
+        body:
+          application/json:
+            example: { "message": "Song not found" }
+  patch:
+    securedBy: [ jwt ]
+    description: Update song by id
+    body:
+      application/json:
+        example: { "title": "Updated Song A", "duration": 215 }
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "_id": "64f000000000000000000001", "title": "Updated Song A", "duration": 215 }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: Invalid token" }
+      404:
+        body:
+          application/json:
+            example: { "message": "Song not found" }
+  delete:
+    securedBy: [ jwt ]
+    description: Delete song by id
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "message": "Song deleted" }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: Invalid token" }
+      404:
+        body:
+          application/json:
+            example: { "message": "Song not found" }
+
+/artists:
+  get:
+    securedBy: [ jwt ]
+    description: Get all artists
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "_id": "64f000000000000000000011",
+                  "name": "Samuel Smith",
+                  "country": "UK",
+                  "genre": "Pop",
+                  "activeSince": 2010
+                }
+              ]
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: No token" }
+      500:
+        body:
+          application/json:
+            example: { "message": "Internal Server Error" }
+
+/artists/{artistId}:
+  uriParameters:
+    artistId:
+      type: string
+      example: 64f000000000000000000011
+  get:
+    securedBy: [ jwt ]
+    description: Get artist by id
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "_id": "64f000000000000000000011", "name": "Samuel Smith", "country": "UK", "genre": "Pop", "activeSince": 2010 }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: Invalid token" }
+      404:
+        body:
+          application/json:
+            example: { "message": "Artist not found" }
+  delete:
+    securedBy: [ jwt ]
+    description: Delete artist by id
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "message": "Artist deleted" }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: Invalid token" }
+      404:
+        body:
+          application/json:
+            example: { "message": "Artist not found" }
+
+/albums:
+  get:
+    securedBy: [ jwt ]
+    description: Get all albums
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              [
+                {
+                  "_id": "64f000000000000000000021",
+                  "title": "Album One",
+                  "releaseYear": 2015,
+                  "artist": "64f000000000000000000011",
+                  "genre": "Pop"
+                }
+              ]
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: No token" }
+      500:
+        body:
+          application/json:
+            example: { "message": "Internal Server Error" }
+
+/albums/{albumId}:
+  uriParameters:
+    albumId:
+      type: string
+      example: 64f000000000000000000021
+  get:
+    securedBy: [ jwt ]
+    description: Get album by id
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "_id": "64f000000000000000000021", "title": "Album One", "releaseYear": 2015, "genre": "Pop" }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: Invalid token" }
+      404:
+        body:
+          application/json:
+            example: { "message": "Album not found" }
+  patch:
+    securedBy: [ jwt ]
+    description: Update album by id
+    body:
+      application/json:
+        example: { "title": "Updated Album One", "releaseYear": 2016 }
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "_id": "64f000000000000000000021", "title": "Updated Album One", "releaseYear": 2016 }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed: Invalid token" }
+      404:
+        body:
+          application/json:
+            example: { "message": "Album not found" }
+
+/users/signup:
+  post:
+    description: Register a new user
+    body:
+      application/json:
+        example: { "email": "SamuelSmith@test.com", "password": "Sam@12345" }
+    responses:
+      201:
+        body:
+          application/json:
+            example: { "message": "User created", "userId": "64f000000000000000000031" }
+      400:
+        body:
+          application/json:
+            example: { "message": "Email already in use" }
+      500:
+        body:
+          application/json:
+            example: { "message": "Internal Server Error" }
+
+/users/login:
+  post:
+    description: Login and receive a JWT
+    body:
+      application/json:
+        example: { "email": "SamuelSmith@test.com", "password": "Sam@12345" }
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.example", "expiresIn": 3600 }
+      401:
+        body:
+          application/json:
+            example: { "message": "Auth failed" }
+      500:
+        body:
+          application/json:
+            example: { "message": "Internal Server Error" }
